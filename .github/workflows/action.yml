@@ -8,9 +8,9 @@ jobs:
         dotnet-version: ['2.1.x','3.1.x','5.0.x' ]
     steps:
       - uses: actions/checkout@v2
-      - run: git fetch --prune --unshallow
       - name: Setup .NET Core SDK ${{ matrix.dotnet-version }}
         uses: actions/setup-dotnet@v1
         with:
           dotnet-version: ${{ matrix.dotnet-version }}
+      - run: git fetch --prune --unshallow
       - run: dotnet test --collect:"XPlat Code Coverage"
