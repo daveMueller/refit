@@ -3,15 +3,20 @@ on: [workflow_dispatch]
 jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        dotnet-version: ['5.0.x' ]
     steps:
       - uses: actions/checkout@v2
-      - name: Setup .NET Core SDK ${{ matrix.dotnet-version }}
+      - name: Setup .NET Core SDK 2.1.x
         uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: ${{ matrix.dotnet-version }}
+          dotnet-version: '2.1.x'
+      - name: Setup .NET Core SDK 3.1.x
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '3.1.x'
+      - name: Setup .NET Core SDK 5.0.x
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '5.0.x'          
       - run: git fetch --prune --unshallow
       - run: dotnet build
       - run: dotnet test --no-build --collect:"XPlat Code Coverage"
