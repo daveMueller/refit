@@ -5,7 +5,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        dotnet-version: ['3.1.x','5.0.x' ]
+        dotnet-version: ['5.0.x' ]
     steps:
       - uses: actions/checkout@v2
       - name: Setup .NET Core SDK ${{ matrix.dotnet-version }}
@@ -13,4 +13,5 @@ jobs:
         with:
           dotnet-version: ${{ matrix.dotnet-version }}
       - run: git fetch --prune --unshallow
-      - run: dotnet test --collect:"XPlat Code Coverage"
+      - run: dotnet build
+      - run: dotnet test --no-build --collect:"XPlat Code Coverage"
