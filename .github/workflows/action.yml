@@ -19,8 +19,8 @@ jobs:
           dotnet-version: '5.0.x'          
       - run: git fetch --prune --unshallow
       - run: dotnet clean
-      - run: dotnet build --framework net5.0
-      - run: dotnet test --no-build --collect:"XPlat Code Coverage"
+      - run: dotnet build
+      - run: dotnet test --framework net5.0 --no-build --collect:"XPlat Code Coverage"
       - name: ReportGenerator
         uses: danielpalme/ReportGenerator-GitHub-Action@4.8.9
         with:
@@ -41,4 +41,4 @@ jobs:
       - uses: actions/upload-artifact@v2
         with:
           name: my-artifact
-          path: coveragereport
+          path: Refit.Tests\TestResults\*\coverage.cobertura.xml
