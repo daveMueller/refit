@@ -18,7 +18,7 @@ jobs:
         with:
           dotnet-version: '5.0.x'          
       - run: git fetch --prune --unshallow
-      - run: dotnet add package ReportGenerator
+      - run: Install-Package ReportGenerator -Version 4.8.9
       - run: dotnet clean
       - run: dotnet build
       - run: dotnet test --no-build --collect:"XPlat Code Coverage"
