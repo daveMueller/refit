@@ -19,7 +19,7 @@ jobs:
           dotnet-version: '5.0.x'          
       - run: git fetch --prune --unshallow
       - run: dotnet clean
-      - run: dotnet build -framework net5.0
+      - run: dotnet build --framework net5.0
       - run: dotnet test --no-build --collect:"XPlat Code Coverage"
       - name: ReportGenerator
         uses: danielpalme/ReportGenerator-GitHub-Action@4.8.9
