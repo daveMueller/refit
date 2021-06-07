@@ -18,7 +18,6 @@ jobs:
         with:
           dotnet-version: '5.0.x'          
       - run: git fetch --prune --unshallow
-      - run: dotnet add package ReportGenerator --version 4.8.9
       - run: dotnet build
       - run: dotnet test --no-build --collect:"XPlat Code Coverage"
       - uses: actions/upload-artifact@v2
