@@ -18,6 +18,8 @@ jobs:
         with:
           dotnet-version: '5.0.x'          
       - run: git fetch --prune --unshallow
+      - run: rmdir Refit.Tests\TestResults
+      - run: dotnet clean
       - run: dotnet build
       - run: dotnet test --no-build --collect:"XPlat Code Coverage"
       - uses: actions/upload-artifact@v2
